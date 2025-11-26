@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapters | Seen With Care</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .chapters-intro {
+            background: var(--color-warm-white);
+        }
+
+        .intro-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .intro-content p {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            color: var(--color-text);
+            margin-bottom: 2rem;
+        }
+
+        .intro-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Map Section */
+        .map-section {
+            background: var(--color-cream);
+            padding: 5rem 2rem;
+        }
+
+        .map-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #chapter-map {
+            height: 500px;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .leaflet-popup-content-wrapper {
+            border-radius: 12px;
+            padding: 0;
+        }
+
+        .leaflet-popup-content {
+            margin: 0;
+            min-width: 200px;
+        }
+
+        .chapter-popup {
+            padding: 1rem;
+        }
+
+        .chapter-popup h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--color-charcoal);
+            margin-bottom: 0.25rem;
+        }
+
+        .chapter-popup .location {
+            color: var(--color-terracotta);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .chapter-popup p {
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 0.75rem;
+        }
+
+        .chapter-popup .leader {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid var(--color-sand);
+        }
+
+        .chapter-popup .leader-avatar {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, var(--color-terracotta) 0%, var(--color-terracotta-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .chapter-popup .leader-info {
+            font-size: 0.8rem;
+        }
+
+        .chapter-popup .leader-info strong {
+            display: block;
+            color: var(--color-charcoal);
+        }
+
+        .chapter-popup .leader-info span {
+            color: var(--color-text-light);
+        }
+
+        .map-legend {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .legend-dot.active {
+            background: var(--color-terracotta);
+        }
+
+        .legend-dot.coming {
+            background: var(--color-forest);
+        }
+
+        .chapters-grid-section {
+            background: var(--color-cream);
+        }
+
+        .chapters-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .start-chapter-section {
+            background: var(--color-forest);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .start-chapter-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at 0% 100%, rgba(196, 105, 74, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 100% 0%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+        }
+
+        .start-chapter-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .start-chapter-content h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .start-chapter-content p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .benefit-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-item h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-item p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 1024px) {
+            .chapters-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .chapters-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="index.html" class="logo">Seen With<span>Care</span></a>
+        <ul class="nav-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="chapters.html" class="active">Chapters</a></li>
+            <li><a href="care-bags.html">Care Bags</a></li>
+            <li><a href="get-involved.html">Get Involved</a></li>
+            <li><a href="photos.html">Photos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="donate.html" class="nav-cta">Donate</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="page-header-content">
+            <span class="page-tag">Global Network</span>
+            <h1>Our <em>Chapters</em></h1>
+            <p>Making a difference across the world, one community at a time.</p>
+        </div>
+    </header>
+
+    <!-- Intro Section -->
+    <section class="chapters-intro">
+        <div class="intro-content">
+            <p>Seen With Care currently has <strong>20 global chapters</strong> led by high-school changemakers. To create lasting change, we hope to reach individuals on every corner of the globe. Thus, our chapter program empowers young, global change-makers to adapt our idea in their own respective communities. To help them get started, each chapter receives an initial grant with all the supplies they need to host their first care bag distribution event. From there, their impact flourishes, and together, we make a collective difference.</p>
+            <div class="intro-buttons">
+                <a href="chapters-info.html" class="btn btn-primary">
+                    Interested? Learn More
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="section-header">
+            <span class="section-tag">Global Reach</span>
+            <h2>Our Chapters Around the World</h2>
+            <p>Click on a marker to learn more about each chapter.</p>
+        </div>
+        <div class="map-container">
+            <div id="chapter-map"></div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-box">
+            <h2>Other Ways to Help</h2>
+            <p>There are many ways to make a difference with Seen With Care beyond leading a chapter.</p>
+            <div class="cta-buttons">
+                <a href="get-involved.html" class="btn btn-primary">
+                    Explore Options
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="donate.html" class="btn btn-secondary">Donate</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">Seen With<span>Care</span></div>
+                <p>Destigmatizing homelessness and providing direct aid to those living outside, one care bag at a time.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="chapters.html">Chapters</a></li>
+                    <li><a href="care-bags.html">Care Bags</a></li>
+                    <li><a href="photos.html">Photos</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Get Involved</h4>
+                <ul>
+                    <li><a href="get-involved.html">Volunteer</a></li>
+                    <li><a href="chapters.html">Start a Chapter</a></li>
+                    <li><a href="donate.html">Donate</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:team@seenwithcare.org">team@seenwithcare.org</a></li>
+                    <li><a href="contact.html">Send a Message</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Seen With Care. All rights reserved. Made with ❤️ for those who need it most.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Initialize the map
+        const map = L.map('chapter-map').setView([20, 0], 2);
+
+        // Add tile layer (OpenStreetMap)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 18
+        }).addTo(map);
+
+        // Custom marker icons
+        const activeIcon = L.divIcon({
+            className: 'custom-marker',
+            html: `<div style="
+                width: 30px;
+                height: 30px;
+                background: linear-gradient(135deg, #C4694A 0%, #a85a3f 100%);
+                border-radius: 50%;
+                border: 3px solid white;
+                box-shadow: 0 4px 15px rgba(196, 105, 74, 0.4);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            "><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>`,
+            iconSize: [30, 30],
+            iconAnchor: [15, 15],
+            popupAnchor: [0, -15]
+        });
+
+        const comingIcon = L.divIcon({
+            className: 'custom-marker',
+            html: `<div style="
+                width: 30px;
+                height: 30px;
+                background: linear-gradient(135deg, #2C4A3E 0%, #1a2d26 100%);
+                border-radius: 50%;
+                border: 3px solid white;
+                box-shadow: 0 4px 15px rgba(44, 74, 62, 0.4);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            "><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>`,
+            iconSize: [30, 30],
+            iconAnchor: [15, 15],
+            popupAnchor: [0, -15]
+        });
+
+        // Chapter data - 20 locations across the globe
+        const chapters = [
+            // North America
+            { lat: 40.7128, lng: -74.0060, name: "New York City", country: "United States", leader: "Jane Doe", initials: "JD", description: "Serving the homeless population across Manhattan and Brooklyn with monthly distribution events.", active: true },
+            { lat: 34.0522, lng: -118.2437, name: "Los Angeles", country: "United States", leader: "Michael Smith", initials: "MS", description: "Working with local shelters and organizing Skid Row outreach programs.", active: true },
+            { lat: 41.8781, lng: -87.6298, name: "Chicago", country: "United States", leader: "Emily Johnson", initials: "EJ", description: "Focusing on winter preparedness with extra warm clothing and supplies.", active: true },
+            { lat: 26.1224, lng: -80.1373, name: "Fort Lauderdale", country: "United States", leader: "Alex Rivera", initials: "AR", description: "Our founding chapter serving South Florida communities.", active: true },
+            { lat: 25.7617, lng: -80.1918, name: "Miami", country: "United States", leader: "Sofia Martinez", initials: "SM", description: "Partnering with local organizations for beach and urban outreach.", active: true },
+            { lat: 37.7749, lng: -122.4194, name: "San Francisco", country: "United States", leader: "David Lee", initials: "DL", description: "Addressing homelessness in the Bay Area with compassion.", active: true },
+            { lat: 47.6062, lng: -122.3321, name: "Seattle", country: "United States", leader: "Rachel Kim", initials: "RK", description: "Providing care bags to those living outside in the Pacific Northwest.", active: true },
+            { lat: 43.6532, lng: -79.3832, name: "Toronto", country: "Canada", leader: "Sarah Chen", initials: "SC", description: "Year-round support with special winter and summer care bag programs.", active: true },
+            { lat: 49.2827, lng: -123.1207, name: "Vancouver", country: "Canada", leader: "James Wilson", initials: "JW", description: "Supporting Vancouver's Downtown Eastside community.", active: true },
+            
+            // Europe
+            { lat: 51.5074, lng: -0.1278, name: "London", country: "United Kingdom", leader: "Oliver Williams", initials: "OW", description: "Partnering with local organizations to serve rough sleepers across the city.", active: true },
+            { lat: 48.8566, lng: 2.3522, name: "Paris", country: "France", leader: "Marie Dubois", initials: "MD", description: "Bringing care and compassion to those living on the streets of Paris.", active: true },
+            { lat: 52.5200, lng: 13.4050, name: "Berlin", country: "Germany", leader: "Hans Mueller", initials: "HM", description: "Organizing care bag drives and awareness campaigns.", active: true },
+            { lat: 41.9028, lng: 12.4964, name: "Rome", country: "Italy", leader: "Lucia Romano", initials: "LR", description: "Serving the homeless community near Vatican City and beyond.", active: true },
+            
+            // Asia Pacific
+            { lat: -33.8688, lng: 151.2093, name: "Sydney", country: "Australia", leader: "Liam Thompson", initials: "LT", description: "Engaging university students in outreach and education initiatives.", active: true },
+            { lat: -37.8136, lng: 144.9631, name: "Melbourne", country: "Australia", leader: "Emma Brown", initials: "EB", description: "Community-focused care bag distribution across Melbourne.", active: true },
+            { lat: 1.3521, lng: 103.8198, name: "Singapore", country: "Singapore", leader: "Wei Lin Tan", initials: "WT", description: "Addressing homelessness in Southeast Asia's urban center.", active: true },
+            { lat: 35.6762, lng: 139.6503, name: "Tokyo", country: "Japan", leader: "Yuki Tanaka", initials: "YT", description: "Bringing dignity and care to Tokyo's homeless population.", active: true },
+            
+            // Coming Soon
+            { lat: 19.4326, lng: -99.1332, name: "Mexico City", country: "Mexico", leader: "Coming Soon", initials: "?", description: "Chapter launching soon! Interested in leading? Apply today.", active: false },
+            { lat: -23.5505, lng: -46.6333, name: "São Paulo", country: "Brazil", leader: "Coming Soon", initials: "?", description: "Chapter launching soon! Interested in leading? Apply today.", active: false },
+            { lat: 28.6139, lng: 77.2090, name: "New Delhi", country: "India", leader: "Coming Soon", initials: "?", description: "Chapter launching soon! Interested in leading? Apply today.", active: false }
+        ];
+
+        // Add markers for each chapter
+        chapters.forEach(chapter => {
+            const icon = chapter.active ? activeIcon : comingIcon;
+            const marker = L.marker([chapter.lat, chapter.lng], { icon: icon }).addTo(map);
+            
+            const popupContent = `
+                <div class="chapter-popup">
+                    <h3>${chapter.name}</h3>
+                    <div class="location">${chapter.country}</div>
+                    <p>${chapter.description}</p>
+                    <div class="leader">
+                        <div class="leader-avatar">${chapter.initials}</div>
+                        <div class="leader-info">
+                            <strong>Chapter Leader</strong>
+                            <span>${chapter.leader}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            marker.bindPopup(popupContent);
+        });
+
+        // Fit map to show all markers
+        const bounds = L.latLngBounds(chapters.map(c => [c.lat, c.lng]));
+        map.fitBounds(bounds, { padding: [50, 50] });
+    </script>
+</body>
+</html>

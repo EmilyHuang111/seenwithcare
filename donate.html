@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate | Seen With Care</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .donate-intro {
+            background: var(--color-warm-white);
+            text-align: center;
+        }
+
+        .donate-intro-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .donate-intro-content p {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            color: var(--color-text);
+            margin-bottom: 1rem;
+        }
+
+        .tax-note {
+            background: rgba(196, 105, 74, 0.1);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            color: var(--color-terracotta-dark);
+            margin-top: 2rem;
+        }
+
+        .donation-section {
+            background: var(--color-cream);
+        }
+
+        .donation-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.05);
+        }
+
+        .donation-amounts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .amount-btn {
+            padding: 1.25rem 1rem;
+            border: 2px solid var(--color-sand);
+            border-radius: 12px;
+            background: white;
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--color-charcoal);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .amount-btn:hover {
+            border-color: var(--color-terracotta);
+            background: rgba(196, 105, 74, 0.05);
+        }
+
+        .amount-btn.selected {
+            border-color: var(--color-terracotta);
+            background: var(--color-terracotta);
+            color: white;
+        }
+
+        .custom-amount {
+            margin-bottom: 2rem;
+        }
+
+        .custom-amount label {
+            display: block;
+            font-weight: 500;
+            color: var(--color-charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        .custom-input-wrapper {
+            position: relative;
+        }
+
+        .custom-input-wrapper span {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            color: var(--color-text-light);
+        }
+
+        .custom-amount input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 2rem;
+            border: 2px solid var(--color-sand);
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-family: var(--font-body);
+            transition: all 0.3s ease;
+        }
+
+        .custom-amount input:focus {
+            outline: none;
+            border-color: var(--color-terracotta);
+        }
+
+        .donation-frequency {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .frequency-btn {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid var(--color-sand);
+            border-radius: 12px;
+            background: white;
+            font-weight: 500;
+            color: var(--color-charcoal);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .frequency-btn:hover {
+            border-color: var(--color-terracotta);
+        }
+
+        .frequency-btn.selected {
+            border-color: var(--color-forest);
+            background: var(--color-forest);
+            color: white;
+        }
+
+        .donate-btn {
+            width: 100%;
+            padding: 1.25rem;
+            background: linear-gradient(135deg, var(--color-terracotta) 0%, var(--color-terracotta-dark) 100%);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .donate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(196, 105, 74, 0.3);
+        }
+
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--color-sand);
+        }
+
+        .payment-method {
+            padding: 0.5rem 1rem;
+            background: var(--color-cream);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            font-weight: 500;
+        }
+
+        .secure-note {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+        }
+
+        .impact-section {
+            background: var(--color-forest);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .impact-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at 0% 100%, rgba(196, 105, 74, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 100% 0%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+        }
+
+        .impact-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .impact-section .section-header h2 {
+            color: white;
+        }
+
+        .impact-section .section-header p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .impact-section .section-tag {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .impact-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem 1.5rem;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .impact-amount {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-terracotta);
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-item p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .donation-amounts {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .donation-frequency {
+                flex-direction: column;
+            }
+
+            .impact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .donation-container {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="index.html" class="logo">Seen With<span>Care</span></a>
+        <ul class="nav-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="chapters.html">Chapters</a></li>
+            <li><a href="care-bags.html">Care Bags</a></li>
+            <li><a href="get-involved.html">Get Involved</a></li>
+            <li><a href="photos.html">Photos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="donate.html" class="nav-cta">Donate</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="page-header-content">
+            <span class="page-tag">Support Our Mission</span>
+            <h1>Donate <em>Now</em></h1>
+            <p>Your generosity helps us create care bags and spread compassion to those who need it most.</p>
+        </div>
+    </header>
+
+    <!-- Donate Intro Section -->
+    <section class="donate-intro">
+        <div class="donate-intro-content">
+            <p>Thank you for your interest in supporting our mission! Your donation will allow us to continue fighting for the destigmatization of homelessness while making an impact in the everyday lives of countless people who live outside.</p>
+            <p>We are incredibly grateful for your generosity.</p>
+            <div class="tax-note">
+                <strong>Tax Information:</strong> Seen With Care is a registered 501(c)(3) nonprofit organization. All donations are tax-deductible to the extent allowed by law.
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Section -->
+    <section class="donation-section">
+        <div class="section-header">
+            <span class="section-tag">Give Today</span>
+            <h2>Make a Donation</h2>
+            <p>Every dollar goes directly toward creating care bags and expanding our reach.</p>
+        </div>
+        <div class="donation-container">
+            <div class="donation-amounts">
+                <button class="amount-btn" data-amount="10">$10</button>
+                <button class="amount-btn" data-amount="25">$25</button>
+                <button class="amount-btn selected" data-amount="50">$50</button>
+                <button class="amount-btn" data-amount="100">$100</button>
+                <button class="amount-btn" data-amount="200">$200</button>
+                <button class="amount-btn" data-amount="500">$500</button>
+            </div>
+            
+            <div class="custom-amount">
+                <label for="customAmount">Or enter a custom amount</label>
+                <div class="custom-input-wrapper">
+                    <span>$</span>
+                    <input type="number" id="customAmount" placeholder="Other amount" min="1">
+                </div>
+            </div>
+
+            <div class="donation-frequency">
+                <button class="frequency-btn selected" data-frequency="one-time">One-Time</button>
+                <button class="frequency-btn" data-frequency="monthly">Monthly</button>
+            </div>
+
+            <button class="donate-btn" id="donateBtn">
+                Donate Now
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </button>
+
+            <div class="payment-methods">
+                <span class="payment-method">Powered by PayPal</span>
+            </div>
+
+            <p class="secure-note">Secure payment processing. You'll be redirected to PayPal to complete your donation.</p>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact-section">
+        <div class="impact-content">
+            <div class="section-header">
+                <span class="section-tag">Your Impact</span>
+                <h2>Where Your Money Goes</h2>
+                <p>See exactly how your donation makes a difference.</p>
+            </div>
+            <div class="impact-grid">
+                <div class="impact-item">
+                    <div class="impact-amount">$10</div>
+                    <p>Provides warm socks, gloves, and a hat for one person</p>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-amount">$25</div>
+                    <p>Creates 2 complete care bags with all essentials</p>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-amount">$75</div>
+                    <p>Funds supplies for a small community distribution event</p>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-amount">$200</div>
+                    <p>Helps launch a new chapter with starter supplies</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-box">
+            <h2>Questions About Donating?</h2>
+            <p>We're happy to discuss donation options, provide receipts, or answer any questions you may have.</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="btn btn-primary">
+                    Contact Us
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="about.html" class="btn btn-secondary">Learn More About Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">Seen With<span>Care</span></div>
+                <p>Destigmatizing homelessness and providing direct aid to those living outside, one care bag at a time.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="chapters.html">Chapters</a></li>
+                    <li><a href="care-bags.html">Care Bags</a></li>
+                    <li><a href="photos.html">Photos</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Get Involved</h4>
+                <ul>
+                    <li><a href="get-involved.html">Volunteer</a></li>
+                    <li><a href="chapters.html">Start a Chapter</a></li>
+                    <li><a href="donate.html">Donate</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:team@seenwithcare.org">team@seenwithcare.org</a></li>
+                    <li><a href="contact.html">Send a Message</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Seen With Care. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Donation amount selection
+        const amountBtns = document.querySelectorAll('.amount-btn');
+        const customInput = document.getElementById('customAmount');
+        let selectedAmount = 50;
+
+        amountBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                amountBtns.forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+                selectedAmount = parseInt(btn.dataset.amount);
+                customInput.value = '';
+            });
+        });
+
+        customInput.addEventListener('input', () => {
+            if (customInput.value) {
+                amountBtns.forEach(b => b.classList.remove('selected'));
+                selectedAmount = parseInt(customInput.value);
+            }
+        });
+
+        // Frequency selection
+        const frequencyBtns = document.querySelectorAll('.frequency-btn');
+        let selectedFrequency = 'one-time';
+
+        frequencyBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                frequencyBtns.forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+                selectedFrequency = btn.dataset.frequency;
+            });
+        });
+
+        // Donate button - redirect to PayPal
+        document.getElementById('donateBtn').addEventListener('click', () => {
+            const amount = customInput.value || selectedAmount;
+            if (amount && amount > 0) {
+                // PayPal Donation URL
+                // Replace 'seenwithcare@gmail.com' with your actual PayPal email
+                const paypalEmail = 'hjm0525@gmail.com';
+                const itemName = encodeURIComponent('Seen With Care Donation');
+                
+                let paypalUrl;
+                if (selectedFrequency === 'monthly') {
+                    // Monthly recurring donation
+                    paypalUrl = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick-subscriptions&business=${paypalEmail}&item_name=${itemName}&a3=${amount}&p3=1&t3=M&src=1&no_note=1&currency_code=USD`;
+                } else {
+                    // One-time donation
+                    paypalUrl = `https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=${paypalEmail}&item_name=${itemName}&amount=${amount}&currency_code=USD`;
+                }
+                
+                window.open(paypalUrl, '_blank');
+            } else {
+                alert('Please select or enter a donation amount.');
+            }
+        });
+    </script>
+</body>
+</html>

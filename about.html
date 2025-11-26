@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Seen With Care</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .founders-section {
+            background: var(--color-warm-white);
+        }
+
+        .founders-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .founder-story {
+            background: white;
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.05);
+            margin-bottom: 3rem;
+        }
+
+        .founder-story p {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: var(--color-text);
+            margin-bottom: 1.5rem;
+        }
+
+        .founder-story p:last-child {
+            margin-bottom: 0;
+        }
+
+        .mission-statement {
+            background: linear-gradient(135deg, var(--color-forest) 0%, var(--color-forest-light) 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 24px;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .mission-statement p {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-style: italic;
+            line-height: 1.7;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .differentiators-section {
+            background: var(--color-cream);
+        }
+
+        .media-section {
+            background: var(--color-warm-white);
+            text-align: center;
+        }
+
+        .media-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .media-logo {
+            padding: 1.5rem 2.5rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            color: var(--color-text-light);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .how-section {
+            background: var(--color-cream);
+        }
+
+        .team-section {
+            background: var(--color-warm-white);
+            text-align: center;
+        }
+
+        .team-cta {
+            margin-top: 2rem;
+        }
+
+        .how-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.05);
+        }
+
+        .how-content h3 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--color-charcoal);
+            margin-bottom: 1rem;
+        }
+
+        .how-content p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--color-text-light);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="index.html" class="logo">Seen With<span>Care</span></a>
+        <ul class="nav-links">
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="chapters.html">Chapters</a></li>
+            <li><a href="care-bags.html">Care Bags</a></li>
+            <li><a href="get-involved.html">Get Involved</a></li>
+            <li><a href="photos.html">Photos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="donate.html" class="nav-cta">Donate</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="page-header-content">
+            <span class="page-tag">Our Story</span>
+            <h1>About <em>Seen With Care</em></h1>
+            <p>Fighting to ensure that no matter the situation, everyone receives the love and care that they deserve.</p>
+        </div>
+    </header>
+
+    <!-- Founders Section -->
+    <section class="founders-section">
+        <div class="founders-content">
+            <div class="founder-story">
+                <p>There are over 150 million people in the world living in homelessness. In 2020, we created our first care bags to hand out directly to people living outside. The original bags contained things like granola bars, gloves, and hand sanitizer.</p>
+                <p>After speaking with recipients, the contents expanded to include small luxuries like postcards and warm socks. We discovered that handing out bags directly fosters a unique sense of giving back, one that cannot be replicated by donating through third-party organizations.</p>
+                <p>Seeing and interacting with real people, and hearing their stories, has led us on a mission to combat the stigma that surrounds homelessness. Today, we fight tirelessly to ensure that no matter the situation, everyone receives the love and care that they deserve.</p>
+            </div>
+
+            <div class="mission-statement">
+                <p>"Our mission is twofold: to humanize people living outside through direct aid and conversation, and to destigmatize homelessness among youth and teens."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- What Sets Us Apart -->
+    <section class="differentiators-section">
+        <div class="section-header">
+            <span class="section-tag">Our Approach</span>
+            <h2>What Sets Us Apart</h2>
+            <p>We believe in direct connection and genuine care.</p>
+        </div>
+        <div class="content-container">
+            <div class="numbered-feature">
+                <div class="feature-number">1</div>
+                <div class="feature-content">
+                    <h3>Direct Delivery</h3>
+                    <p>We travel directly to people in need to deliver our bags and get their feedback. This personal connection ensures we understand real needs and can continuously improve our care bags.</p>
+                </div>
+            </div>
+            <div class="numbered-feature">
+                <div class="feature-number">2</div>
+                <div class="feature-content">
+                    <h3>Stigma Reduction</h3>
+                    <p>Besides lessening the plight of homelessness, we concentrate on stigma reduction. We believe changing perceptions is just as important as providing material support.</p>
+                </div>
+            </div>
+            <div class="numbered-feature">
+                <div class="feature-number">3</div>
+                <div class="feature-content">
+                    <h3>Youth Education</h3>
+                    <p>We are particularly focused on educating youth about homelessness. By engaging young people, we're building a more compassionate generation.</p>
+                </div>
+            </div>
+            <div class="numbered-feature">
+                <div class="feature-number">4</div>
+                <div class="feature-content">
+                    <h3>Dignity First</h3>
+                    <p>Our utmost goal is ensuring that people living outside feel dignified and respected. Every interaction is an opportunity to acknowledge someone's humanity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- How We Do It -->
+    <section class="how-section">
+        <div class="section-header">
+            <span class="section-tag">Our Process</span>
+            <h2>How We Do It</h2>
+        </div>
+        <div class="how-content">
+            <h3>Direct Aid in Action</h3>
+            <p>We help people living outside with direct aid. We create care bags full of everyday supplies including socks, hats, gloves, food, water, personal hygiene kits, and stamped postcards to hand out to the homeless population in our community. We have compiled lists and created tutorials to allow you to do the same in your community.</p>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="section-header">
+            <span class="section-tag">Our People</span>
+            <h2>Meet the Team</h2>
+            <p>The passionate individuals driving our mission forward.</p>
+        </div>
+        <div class="team-cta">
+            <a href="team.html" class="btn btn-primary">
+                View Our Team
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-box">
+            <h2>Join Our Mission</h2>
+            <p>Help us destigmatize homelessness and provide direct aid to those who need it most.</p>
+            <div class="cta-buttons">
+                <a href="get-involved.html" class="btn btn-primary">
+                    Get Involved
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="donate.html" class="btn btn-secondary">Make a Donation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">Seen With<span>Care</span></div>
+                <p>Destigmatizing homelessness and providing direct aid to those living outside, one care bag at a time.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="chapters.html">Chapters</a></li>
+                    <li><a href="care-bags.html">Care Bags</a></li>
+                    <li><a href="photos.html">Photos</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Get Involved</h4>
+                <ul>
+                    <li><a href="get-involved.html">Volunteer</a></li>
+                    <li><a href="chapters.html">Start a Chapter</a></li>
+                    <li><a href="donate.html">Donate</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:team@seenwithcare.org">team@seenwithcare.org</a></li>
+                    <li><a href="contact.html">Send a Message</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Seen With Care. All rights reserved. Made with ❤️ for those who need it most.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

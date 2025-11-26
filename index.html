@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seen With Care | Making a Difference One Bag at a Time</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Hero Section - Home Page Specific */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 8rem 4rem 4rem;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at 20% 80%, rgba(196, 105, 74, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(44, 74, 62, 0.06) 0%, transparent 50%),
+                linear-gradient(180deg, var(--color-cream) 0%, var(--color-warm-white) 100%);
+        }
+
+        .hero-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.4;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C4694A' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 800px;
+            z-index: 2;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(196, 105, 74, 0.1);
+            color: var(--color-terracotta);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        .hero-tag::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--color-terracotta);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            color: var(--color-charcoal);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease 0.1s forwards;
+            opacity: 0;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--color-terracotta);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--color-text-light);
+            max-width: 540px;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 4rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45%;
+            max-width: 600px;
+            z-index: 1;
+            animation: fadeInRight 1s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-image-placeholder {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, var(--color-sand) 0%, var(--color-terracotta) 50%, var(--color-forest) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 150px;
+            height: 150px;
+            background: var(--color-terracotta);
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: -30px;
+            width: 100px;
+            height: 100px;
+            background: var(--color-forest);
+            border-radius: 20px;
+            opacity: 0.1;
+            z-index: -1;
+            transform: rotate(15deg);
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translate(50px, -50%);
+            }
+            to {
+                opacity: 1;
+                transform: translate(0, -50%);
+            }
+        }
+
+        /* Mission Section */
+        .mission-section {
+            background: var(--color-warm-white);
+        }
+
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* How Section */
+        .how-section {
+            background: var(--color-cream);
+        }
+
+        .steps-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .step:last-child {
+            margin-bottom: 0;
+        }
+
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 75px;
+            width: 2px;
+            height: calc(100% - 35px);
+            background: linear-gradient(180deg, var(--color-terracotta), transparent);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            min-width: 60px;
+            background: white;
+            border: 3px solid var(--color-terracotta);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--color-terracotta);
+            box-shadow: 0 8px 25px rgba(196, 105, 74, 0.15);
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-content h3 {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--color-charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        .step-content p {
+            color: var(--color-text-light);
+            line-height: 1.8;
+        }
+
+        @media (max-width: 1200px) {
+            .hero-image {
+                width: 40%;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .hero {
+                padding: 8rem 2rem 4rem;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-image {
+                position: relative;
+                right: auto;
+                top: auto;
+                transform: none;
+                width: 100%;
+                max-width: 500px;
+                margin-top: 3rem;
+                animation: fadeInUp 0.8s ease 0.4s forwards;
+            }
+
+            .mission-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+
+            .step {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+                gap: 1.5rem;
+            }
+
+            .step:not(:last-child)::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="index.html" class="logo">Seen With<span>Care</span></a>
+        <ul class="nav-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="chapters.html">Chapters</a></li>
+            <li><a href="care-bags.html">Care Bags</a></li>
+            <li><a href="get-involved.html">Get Involved</a></li>
+            <li><a href="photos.html">Photos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="donate.html" class="nav-cta">Donate</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-pattern"></div>
+        <div class="hero-content">
+            <span class="hero-tag">Making a Difference</span>
+            <h1>One Bag at a Time,<br><em>One Life</em> at a Time</h1>
+            <p>We create care bags filled with everyday necessities and small comforts for those living outside. Because everyone deserves dignity, warmth, and human connection.</p>
+            <div class="hero-buttons">
+                <a href="get-involved.html" class="btn btn-primary">
+                    Start Helping Today
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="about.html" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="hero-image-wrapper">
+                <div class="hero-image-placeholder">
+                    📷 Your Image Here
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section">
+        <div class="section-header">
+            <span class="section-tag">What Drives Us</span>
+            <h2>Our Mission & Purpose</h2>
+            <p>We believe that those experiencing homelessness deserve not just help, but genuine connection and respect.</p>
+        </div>
+        <div class="mission-grid">
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                </div>
+                <h3>What We Do</h3>
+                <p>We create care bags filled with everyday essentials and small luxuries requested by recipients themselves. From warm socks and hygiene kits to handwritten notes of encouragement.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                        <line x1="9" y1="9" x2="9.01" y2="9"/>
+                        <line x1="15" y1="9" x2="15.01" y2="9"/>
+                    </svg>
+                </div>
+                <h3>Why We Do It</h3>
+                <p>Our mission is to destigmatize homelessness. Those who live outside are worthy of dignity, respect, love, and care. Distributing a care bag acknowledges someone's humanity.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                </div>
+                <h3>How We Do It</h3>
+                <p>We support people living outside through direct aid. Our bags include socks, hats, gloves, food, water, hygiene kits, and stamped postcards. We provide resources for your community.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-content">
+            <div class="section-header">
+                <span class="section-tag">Our Impact</span>
+                <h2>The Numbers That Matter</h2>
+                <p>Every statistic represents a real person whose day was made a little brighter.</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">6,500<span>+</span></div>
+                    <div class="stat-label">Care Bags Created</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">600<span>+</span></div>
+                    <div class="stat-label">Volunteers Engaged</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">30<span>+</span></div>
+                    <div class="stat-label">Distribution Events</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1,000s</div>
+                    <div class="stat-label">Lives Impacted</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">20</div>
+                    <div class="stat-label">Global Chapters</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-section">
+        <div class="section-header">
+            <span class="section-tag">Get Started</span>
+            <h2>How You Can Help</h2>
+            <p>Making a difference is easier than you think.</p>
+        </div>
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Gather Supplies</h3>
+                    <p>Use our curated supply lists to collect essential items like socks, hygiene products, snacks, and water.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Assemble Care Bags</h3>
+                    <p>Pack items into durable bags. Add a personal touch with a handwritten note or stamped postcard.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Distribute with Care</h3>
+                    <p>Hand out bags directly to those in need. Take time for genuine conversation—connection matters.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-box">
+            <h2>Ready to Make a Difference?</h2>
+            <p>Join our community of compassionate individuals working together to support those who need it most.</p>
+            <div class="cta-buttons">
+                <a href="chapters.html" class="btn btn-primary">
+                    Join Our Chapter
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="donate.html" class="btn btn-secondary">Donate Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">Seen With<span>Care</span></div>
+                <p>Destigmatizing homelessness and providing direct aid to those living outside, one care bag at a time.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="chapters.html">Chapters</a></li>
+                    <li><a href="care-bags.html">Care Bags</a></li>
+                    <li><a href="photos.html">Photos</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Get Involved</h4>
+                <ul>
+                    <li><a href="get-involved.html">Volunteer</a></li>
+                    <li><a href="chapters.html">Start a Chapter</a></li>
+                    <li><a href="donate.html">Donate</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:team@seenwithcare.org">team@seenwithcare.org</a></li>
+                    <li><a href="contact.html">Send a Message</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Seen With Care. All rights reserved. Made with ❤️ for those who need it most.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapters & School Clubs | Seen With Care</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Chapter Head Section */
+        .chapter-head-section {
+            background: var(--color-warm-white);
+        }
+
+        .chapter-head-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .chapter-head-box {
+            background: white;
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+
+        .chapter-head-box h3 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-charcoal);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .chapter-head-box > p {
+            color: var(--color-text);
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-box {
+            background: rgba(196, 105, 74, 0.1);
+            padding: 1.25rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .highlight-box p {
+            color: var(--color-terracotta-dark);
+            font-weight: 600;
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .chapter-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        /* School Clubs Section */
+        .clubs-section {
+            background: var(--color-cream);
+        }
+
+        .clubs-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .clubs-box {
+            background: white;
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.05);
+        }
+
+        .clubs-box h3 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-charcoal);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .clubs-box > p {
+            color: var(--color-text);
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .clubs-steps {
+            background: var(--color-cream);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .clubs-steps h4 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--color-charcoal);
+            margin-bottom: 1rem;
+        }
+
+        .clubs-steps ol {
+            margin: 0;
+            padding-left: 1.5rem;
+            color: var(--color-text);
+        }
+
+        .clubs-steps li {
+            margin-bottom: 0.75rem;
+            line-height: 1.7;
+        }
+
+        .clubs-recommendation {
+            background: rgba(44, 74, 62, 0.1);
+            padding: 1.25rem;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+        }
+
+        .clubs-recommendation p {
+            color: var(--color-forest);
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        .clubs-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="index.html" class="logo">Seen With<span>Care</span></a>
+        <ul class="nav-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="chapters.html" class="active">Chapters</a></li>
+            <li><a href="care-bags.html">Care Bags</a></li>
+            <li><a href="get-involved.html">Get Involved</a></li>
+            <li><a href="photos.html">Photos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="donate.html" class="nav-cta">Donate</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="page-header-content">
+            <span class="page-tag">Lead the Change</span>
+            <h1>Chapters & <em>School Clubs</em></h1>
+            <p>Bring Seen With Care to your community and make a lasting impact.</p>
+        </div>
+    </header>
+
+    <!-- Becoming a Chapter Head Section -->
+    <section class="chapter-head-section">
+        <div class="section-header">
+            <span class="section-tag">Start a Chapter</span>
+            <h2>Becoming a Chapter Head</h2>
+            <p>Are you interested in changing the world? Do you view homelessness as an immense societal challenge that has yet to be solved?</p>
+        </div>
+        <div class="chapter-head-content">
+            <div class="chapter-head-box">
+                <h3>Join Us as a Seen With Care Chapter Head!</h3>
+                <p>As a Chapter Head, you will create and distribute bags, host events, fundraise, and make a difference in your community.</p>
+                
+                <div class="highlight-box">
+                    <p>The best part? We'll fund your first round of bags!</p>
+                </div>
+
+                <p>A Seen With Care chapter is the perfect opportunity to apply ideas, strategies, and lessons to combat homelessness in your own city. Homelessness is a worldwide issue and deserves to be acknowledged and addressed in every corner of the globe.</p>
+
+                <div class="chapter-buttons">
+                    <a href="chapter-apply.html" class="btn btn-primary">
+                        Learn More & Apply
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Starting a School Club Section -->
+    <section class="clubs-section" id="school-clubs">
+        <div class="section-header">
+            <span class="section-tag">For Students</span>
+            <h2>Starting a Club at Your School</h2>
+            <p>Get your school community involved and gain leadership experience.</p>
+        </div>
+        <div class="clubs-content">
+            <div class="clubs-box">
+                <h3>🏫 Start a Seen With Care Club</h3>
+                <p>If our mission resonates with you, we encourage you to start a club at your school! This is a great opportunity for you to get your community involved and expand your reach. Additionally, this is a great way for you to get leadership experience.</p>
+                
+                <p>If you are interested, the first step is to reach out to a teacher at your school who might be interested in sponsoring your club. Once you have someone who is interested, reach out to the school club coordinator to officially begin meeting as a club.</p>
+
+                <p>Then, it's time to advertise! The beauty of Seen With Care is that there is no commitment necessary, so anyone can come whenever to help create a bag. Throughout the year, brainstorm fundraising opportunities to continue your amazing work, and certainly take advantage of any funds your school offers for club leaders.</p>
+
+                <div class="clubs-steps">
+                    <h4>How to Get Started:</h4>
+                    <ol>
+                        <li><strong>Find a Sponsor:</strong> Reach out to a teacher at your school who might be interested in sponsoring your club.</li>
+                        <li><strong>Make it Official:</strong> Once you have a sponsor, reach out to the school club coordinator to officially begin meeting as a club.</li>
+                        <li><strong>Advertise:</strong> The beauty of Seen With Care is that there is no commitment necessary—anyone can come whenever to help create a bag!</li>
+                        <li><strong>Fundraise:</strong> Throughout the year, brainstorm fundraising opportunities and take advantage of any funds your school offers for club leaders.</li>
+                        <li><strong>Meet Regularly:</strong> We recommend meeting biweekly to build your bags.</li>
+                    </ol>
+                </div>
+
+                <div class="clubs-recommendation">
+                    <p>We envision using the club period to put together each bag, and then distribute the bags to the club participants to allow them to personally hand them out. We have found this to be the most rewarding part of our project!</p>
+                </div>
+
+                <p style="margin-top: 2rem;">If you have any questions at all, we are here for you every step of the way!</p>
+                
+                <div class="clubs-buttons">
+                    <a href="contact.html" class="btn btn-primary">
+                        Contact Us for Help
+                    </a>
+                    <a href="care-bags.html" class="btn btn-secondary">
+                        View Care Bag Guide
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-box">
+            <h2>Ready to Make a Difference?</h2>
+            <p>Start your journey as a chapter head or school club leader today.</p>
+            <div class="cta-buttons">
+                <a href="chapter-apply.html" class="btn btn-primary">
+                    Apply to Start a Chapter
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="chapters.html" class="btn btn-secondary">View All Chapters</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">Seen With<span>Care</span></div>
+                <p>Destigmatizing homelessness and providing direct aid to those living outside, one care bag at a time.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="chapters.html">Chapters</a></li>
+                    <li><a href="care-bags.html">Care Bags</a></li>
+                    <li><a href="photos.html">Photos</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Get Involved</h4>
+                <ul>
+                    <li><a href="get-involved.html">Volunteer</a></li>
+                    <li><a href="chapters.html">Start a Chapter</a></li>
+                    <li><a href="donate.html">Donate</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:team@seenwithcare.org">team@seenwithcare.org</a></li>
+                    <li><a href="contact.html">Send a Message</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Seen With Care. All rights reserved. Made with ❤️ for those who need it most.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

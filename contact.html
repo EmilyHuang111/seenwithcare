@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Seen With Care</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .contact-section {
+            background: var(--color-warm-white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            padding-top: 1rem;
+        }
+
+        .contact-info h2 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-charcoal);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info > p {
+            color: var(--color-text-light);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .contact-methods {
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-method-icon {
+            width: 50px;
+            height: 50px;
+            min-width: 50px;
+            background: linear-gradient(135deg, rgba(196, 105, 74, 0.1), rgba(44, 74, 62, 0.1));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+
+        .contact-method h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-charcoal);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-method p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+        }
+
+        .contact-method a {
+            color: var(--color-terracotta);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-method a:hover {
+            text-decoration: underline;
+        }
+
+        /* Form Styles */
+
+        .contact-form-wrapper {
+            background: white;
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-form-wrapper h2 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--color-charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-form-wrapper > p {
+            color: var(--color-text-light);
+            margin-bottom: 2rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .faq-section {
+            background: var(--color-cream);
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .faq-item h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-charcoal);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .faq-item h3::before {
+            content: '?';
+            width: 28px;
+            height: 28px;
+            min-width: 28px;
+            background: var(--color-terracotta);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .faq-item p {
+            color: var(--color-text-light);
+            line-height: 1.7;
+            padding-left: 2.75rem;
+        }
+
+        .faq-item a {
+            color: var(--color-terracotta);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .faq-item a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 1024px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .contact-info {
+                order: 2;
+            }
+
+            .contact-form-wrapper {
+                order: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form-wrapper {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="index.html" class="logo">Seen With<span>Care</span></a>
+        <ul class="nav-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="chapters.html">Chapters</a></li>
+            <li><a href="care-bags.html">Care Bags</a></li>
+            <li><a href="get-involved.html">Get Involved</a></li>
+            <li><a href="photos.html">Photos</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+            <li><a href="donate.html" class="nav-cta">Donate</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="page-header-content">
+            <span class="page-tag">Get in Touch</span>
+            <h1>Contact <em>Us</em></h1>
+            <p>We'd love to hear from you! Reach out with questions, ideas, or to share how you're making a difference.</p>
+        </div>
+    </header>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h2>Reach Out</h2>
+                <p>We would love to hear your ideas! Whether you want to start a chapter, volunteer, or just say hello, we're here to help.</p>
+                
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <div class="contact-method-icon">1</div>
+                        <div>
+                            <h3>Email Us</h3>
+                            <p><a href="mailto:team@seenwithcare.org">team@seenwithcare.org</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-method-icon">2</div>
+                        <div>
+                            <h3>Share Your Photos</h3>
+                            <p>Show us how you help out your own community by emailing photos to <a href="mailto:team@seenwithcare.org">team@seenwithcare.org</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-method-icon">3</div>
+                        <div>
+                            <h3>Frequently Asked Questions</h3>
+                            <p>Check out our FAQ section below for common questions and answers.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="contact-form-wrapper">
+                <h2>Send Us a Message</h2>
+                <p>Fill out the form below and we'll get back to you as soon as possible.</p>
+                
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a topic...</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="volunteer">Volunteering</option>
+                            <option value="chapter">Starting a Chapter</option>
+                            <option value="donate">Donations</option>
+                            <option value="media">Media/Press</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message *</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Tell us how we can help..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                        Send Message
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="section-header">
+            <span class="section-tag">FAQs</span>
+            <h2>Frequently Asked Questions</h2>
+            <p>Quick answers to common questions about Seen With Care.</p>
+        </div>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <h3>How can I start a chapter?</h3>
+                <p>Visit our <a href="chapters.html">Chapters page</a> to learn about the application process. We provide starter kits and support for new chapter leaders.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Are donations tax-deductible?</h3>
+                <p>Yes! All donations are tax-deductible. They will appear on your statement under Hack+ (our fiscal sponsor).</p>
+            </div>
+            <div class="faq-item">
+                <h3>What goes in a care bag?</h3>
+                <p>Each bag includes socks, hygiene items, snacks, water, and a stamped postcard. See our full list on the <a href="care-bags.html">Care Bags page</a>.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How can I volunteer?</h3>
+                <p>Check out our <a href="get-involved.html">Get Involved page</a> or contact us directly. We welcome volunteers of all ages!</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can I donate supplies instead of money?</h3>
+                <p>Absolutely! Contact us for our current needs list and mailing address for supply donations.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Where do you operate?</h3>
+                <p>We have 20 global chapters led by student changemakers. Find locations on our <a href="chapters.html">Chapters page</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-box">
+            <h2>Ready to Make a Difference?</h2>
+            <p>Join thousands of volunteers helping those living outside, one care bag at a time.</p>
+            <div class="cta-buttons">
+                <a href="get-involved.html" class="btn btn-primary">
+                    Get Involved
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="donate.html" class="btn btn-secondary">Donate Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">Seen With<span>Care</span></div>
+                <p>Destigmatizing homelessness and providing direct aid to those living outside, one care bag at a time.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="chapters.html">Chapters</a></li>
+                    <li><a href="care-bags.html">Care Bags</a></li>
+                    <li><a href="photos.html">Photos</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Get Involved</h4>
+                <ul>
+                    <li><a href="get-involved.html">Volunteer</a></li>
+                    <li><a href="chapters.html">Start a Chapter</a></li>
+                    <li><a href="donate.html">Donate</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:team@seenwithcare.org">team@seenwithcare.org</a></li>
+                    <li><a href="contact.html">Send a Message</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Seen With Care. All rights reserved. Made with ❤️ for those who need it most.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
