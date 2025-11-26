@@ -173,6 +173,12 @@
             text-decoration: underline;
         }
 
+        .faq-item:last-child:nth-child(odd) {
+            grid-column: 1 / -1;
+            max-width: 50%;
+            justify-self: center;
+        }
+
         @media (max-width: 1024px) {
             .contact-grid {
                 grid-template-columns: 1fr;
@@ -324,10 +330,6 @@
                 <p>Visit our <a href="chapters.html">Chapters page</a> to learn about the application process. We provide starter kits and support for new chapter leaders.</p>
             </div>
             <div class="faq-item">
-                <h3>Are donations tax-deductible?</h3>
-                <p>Yes! All donations are tax-deductible. They will appear on your statement under Hack+ (our fiscal sponsor).</p>
-            </div>
-            <div class="faq-item">
                 <h3>What goes in a care bag?</h3>
                 <p>Each bag includes socks, hygiene items, snacks, water, and a stamped postcard. See our full list on the <a href="care-bags.html">Care Bags page</a>.</p>
             </div>
@@ -392,7 +394,7 @@
                 <h4>Contact</h4>
                 <ul>
                     <li><a href="mailto:team@seenwithcare.org">team@seenwithcare.org</a></li>
-                    <li><a href="contact.html">Send a Message</a></li>
+                    
                 </ul>
             </div>
         </div>
