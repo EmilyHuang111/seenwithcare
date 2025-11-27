@@ -60,14 +60,6 @@ nav.scrolled {
     color: var(--color-forest);
     text-decoration: none;
     letter-spacing: -0.02em;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-}
-
-.logo img {
-    height: 36px;
-    width: auto;
 }
 
 .logo span {
