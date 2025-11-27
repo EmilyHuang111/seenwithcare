@@ -23,6 +23,77 @@
             color: var(--color-text);
         }
 
+        /* Founder Section */
+        .founder-section {
+            background: var(--color-warm-white);
+        }
+
+        .founder-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.05);
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .founder-photo {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(135deg, var(--color-forest) 0%, var(--color-forest-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .founder-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .founder-photo-placeholder {
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: 700;
+            color: white;
+            font-family: var(--font-display);
+        }
+
+        .founder-info {
+            padding: 2.5rem;
+        }
+
+        .founder-info h3 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        .founder-role {
+            color: var(--color-terracotta);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .founder-info p {
+            color: var(--color-text-light);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        /* Board Section */
         .team-grid-section {
             background: var(--color-cream);
         }
@@ -31,7 +102,7 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            max-width: 1100px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
@@ -51,11 +122,18 @@
 
         .team-photo {
             width: 100%;
-            aspect-ratio: 1;
+            height: 280px;
             background: linear-gradient(135deg, var(--color-sand) 0%, var(--color-cream) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
+        }
+
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .team-photo-placeholder {
@@ -97,89 +175,17 @@
             line-height: 1.6;
         }
 
-        .founders-section {
-            background: var(--color-warm-white);
-        }
-
-        .founders-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2.5rem;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .founder-card {
-            background: white;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.05);
-            text-align: center;
-        }
-
-        .founder-photo {
-            width: 100%;
-            aspect-ratio: 4/3;
-            background: linear-gradient(135deg, var(--color-forest) 0%, var(--color-forest-light) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .founder-photo-placeholder {
-            width: 100px;
-            height: 100px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: white;
-            font-family: var(--font-display);
-        }
-
-        .founder-info {
-            padding: 2rem;
-        }
-
-        .founder-info h3 {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--color-charcoal);
-            margin-bottom: 0.25rem;
-        }
-
-        .founder-role {
-            color: var(--color-terracotta);
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .founder-info p {
-            color: var(--color-text-light);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        @media (max-width: 1024px) {
+        @media (max-width: 900px) {
             .team-grid {
                 grid-template-columns: repeat(2, 1fr);
+                max-width: 600px;
             }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 600px) {
             .team-grid {
                 grid-template-columns: 1fr;
-                max-width: 400px;
-            }
-
-            .founders-grid {
-                grid-template-columns: 1fr;
-                max-width: 450px;
+                max-width: 350px;
             }
         }
     </style>
@@ -220,33 +226,21 @@
         </div>
     </section>
 
-    <!-- Founders Section -->
-    <section class="founders-section">
+    <!-- Founder Section -->
+    <section class="founder-section">
         <div class="section-header">
             <span class="section-tag">Leadership</span>
-            <h2>Our Founders</h2>
-            <p>The visionaries who started it all.</p>
+            <h2>Our Founder</h2>
         </div>
-        <div class="founders-grid">
-            <div class="founder-card">
-                <div class="founder-photo">
-                    <div class="founder-photo-placeholder">EA</div>
-                </div>
-                <div class="founder-info">
-                    <h3>Emily Anderson</h3>
-                    <div class="founder-role">Co-Founder & Executive Director</div>
-                    <p>Emily founded Seen With Care with a vision to change how society views and supports those experiencing homelessness.</p>
-                </div>
+        <div class="founder-card">
+            <div class="founder-photo">
+                <!-- Upload image as: founder-photo.jpg -->
+                <img src="founder-photo.jpg" alt="Founder Name">
             </div>
-            <div class="founder-card">
-                <div class="founder-photo">
-                    <div class="founder-photo-placeholder">JM</div>
-                </div>
-                <div class="founder-info">
-                    <h3>Jordan Mitchell</h3>
-                    <div class="founder-role">Co-Founder & Director of Operations</div>
-                    <p>Jordan leads our chapter expansion efforts and ensures our operations run smoothly across all locations.</p>
-                </div>
+            <div class="founder-info">
+                <h3>Founder Name</h3>
+                <div class="founder-role">Founder & Executive Director</div>
+                <p>Add founder bio here. Describe their vision for Seen With Care, what inspired them to start the organization, and their commitment to destigmatizing homelessness.</p>
             </div>
         </div>
     </section>
@@ -261,62 +255,35 @@
         <div class="team-grid">
             <div class="team-card">
                 <div class="team-photo">
-                    <div class="team-photo-placeholder">AR</div>
+                    <!-- Upload image as: board1-photo.jpg -->
+                    <img src="board1-photo.jpg" alt="Board Member 1">
                 </div>
                 <div class="team-info">
-                    <h3>Alex Rivera</h3>
-                    <div class="team-role">Director of Marketing</div>
-                    <p>Manages our social media presence and brand communications.</p>
+                    <h3>Board Member 1</h3>
+                    <div class="team-role">Role Title</div>
+                    <p>Brief description of their role and contributions to the organization.</p>
                 </div>
             </div>
             <div class="team-card">
                 <div class="team-photo">
-                    <div class="team-photo-placeholder">SC</div>
+                    <!-- Upload image as: board2-photo.jpg -->
+                    <img src="board2-photo.jpg" alt="Board Member 2">
                 </div>
                 <div class="team-info">
-                    <h3>Sarah Chen</h3>
-                    <div class="team-role">Director of Outreach</div>
-                    <p>Leads partnership development and community engagement initiatives.</p>
+                    <h3>Board Member 2</h3>
+                    <div class="team-role">Role Title</div>
+                    <p>Brief description of their role and contributions to the organization.</p>
                 </div>
             </div>
             <div class="team-card">
                 <div class="team-photo">
-                    <div class="team-photo-placeholder">MK</div>
+                    <!-- Upload image as: board3-photo.jpg -->
+                    <img src="board3-photo.jpg" alt="Board Member 3">
                 </div>
                 <div class="team-info">
-                    <h3>Michael Kim</h3>
-                    <div class="team-role">Director of Operations</div>
-                    <p>Oversees technology, website, and data management.</p>
-                </div>
-            </div>
-            <div class="team-card">
-                <div class="team-photo">
-                    <div class="team-photo-placeholder">OW</div>
-                </div>
-                <div class="team-info">
-                    <h3>Olivia Williams</h3>
-                    <div class="team-role">Editorial Manager</div>
-                    <p>Creates educational content and manages our blog and articles.</p>
-                </div>
-            </div>
-            <div class="team-card">
-                <div class="team-photo">
-                    <div class="team-photo-placeholder">DL</div>
-                </div>
-                <div class="team-info">
-                    <h3>David Lee</h3>
-                    <div class="team-role">Chapter Coordinator</div>
-                    <p>Supports new chapters and coordinates global chapter activities.</p>
-                </div>
-            </div>
-            <div class="team-card">
-                <div class="team-photo">
-                    <div class="team-photo-placeholder">RJ</div>
-                </div>
-                <div class="team-info">
-                    <h3>Rachel Johnson</h3>
-                    <div class="team-role">Volunteer Coordinator</div>
-                    <p>Manages volunteer recruitment and engagement programs.</p>
+                    <h3>Board Member 3</h3>
+                    <div class="team-role">Role Title</div>
+                    <p>Brief description of their role and contributions to the organization.</p>
                 </div>
             </div>
         </div>
@@ -368,12 +335,11 @@
                 <h4>Contact</h4>
                 <ul>
                     <li><a href="mailto:team@seenwithcare.org">team@seenwithcare.org</a></li>
-                    
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Seen With Care. All rights reserved. Made with ❤️ for those who need it most.</p>
+            <p>&copy; 2025 Seen With Care. All rights reserved.</p>
         </div>
     </footer>
 

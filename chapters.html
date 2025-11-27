@@ -67,6 +67,7 @@
 
         .chapter-popup {
             padding: 1rem;
+            text-align: center;
         }
 
         .chapter-popup h3 {
@@ -81,48 +82,23 @@
             color: var(--color-terracotta);
             font-size: 0.85rem;
             font-weight: 500;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
         }
 
-        .chapter-popup p {
-            color: var(--color-text-light);
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin-bottom: 0.75rem;
-        }
-
-        .chapter-popup .leader {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding-top: 0.5rem;
-            border-top: 1px solid var(--color-sand);
-        }
-
-        .chapter-popup .leader-avatar {
-            width: 28px;
-            height: 28px;
-            background: linear-gradient(135deg, var(--color-terracotta) 0%, var(--color-terracotta-dark) 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-            font-weight: 600;
+        .popup-btn {
+            display: inline-block;
+            background: var(--color-terracotta);
             color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: background 0.3s ease;
         }
 
-        .chapter-popup .leader-info {
-            font-size: 0.8rem;
-        }
-
-        .chapter-popup .leader-info strong {
-            display: block;
-            color: var(--color-charcoal);
-        }
-
-        .chapter-popup .leader-info span {
-            color: var(--color-text-light);
+        .popup-btn:hover {
+            background: var(--color-terracotta-dark);
         }
 
         .map-legend {
@@ -357,7 +333,7 @@
                 <h4>Contact</h4>
                 <ul>
                     <li><a href="mailto:team@seenwithcare.org">team@seenwithcare.org</a></li>
-                    
+                    <li><a href="contact.html">Send a Message</a></li>
                 </ul>
             </div>
         </div>
@@ -377,7 +353,7 @@
             maxZoom: 18
         }).addTo(map);
 
-        // Custom marker icons
+        // Custom marker icon
         const activeIcon = L.divIcon({
             className: 'custom-marker',
             html: `<div style="
@@ -396,72 +372,42 @@
             popupAnchor: [0, -15]
         });
 
-        const comingIcon = L.divIcon({
-            className: 'custom-marker',
-            html: `<div style="
-                width: 30px;
-                height: 30px;
-                background: linear-gradient(135deg, #2C4A3E 0%, #1a2d26 100%);
-                border-radius: 50%;
-                border: 3px solid white;
-                box-shadow: 0 4px 15px rgba(44, 74, 62, 0.4);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            "><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>`,
-            iconSize: [30, 30],
-            iconAnchor: [15, 15],
-            popupAnchor: [0, -15]
-        });
-
-        // Chapter data - 20 locations across the globe
+        // Chapter data - 20 locations
         const chapters = [
-            // North America
-            { lat: 40.7128, lng: -74.0060, name: "New York City", country: "United States", leader: "Jane Doe", initials: "JD", description: "Serving the homeless population across Manhattan and Brooklyn with monthly distribution events.", active: true },
-            { lat: 34.0522, lng: -118.2437, name: "Los Angeles", country: "United States", leader: "Michael Smith", initials: "MS", description: "Working with local shelters and organizing Skid Row outreach programs.", active: true },
-            { lat: 41.8781, lng: -87.6298, name: "Chicago", country: "United States", leader: "Emily Johnson", initials: "EJ", description: "Focusing on winter preparedness with extra warm clothing and supplies.", active: true },
-            { lat: 26.1224, lng: -80.1373, name: "Fort Lauderdale", country: "United States", leader: "Alex Rivera", initials: "AR", description: "Our founding chapter serving South Florida communities.", active: true },
-            { lat: 25.7617, lng: -80.1918, name: "Miami", country: "United States", leader: "Sofia Martinez", initials: "SM", description: "Partnering with local organizations for beach and urban outreach.", active: true },
-            { lat: 37.7749, lng: -122.4194, name: "San Francisco", country: "United States", leader: "David Lee", initials: "DL", description: "Addressing homelessness in the Bay Area with compassion.", active: true },
-            { lat: 47.6062, lng: -122.3321, name: "Seattle", country: "United States", leader: "Rachel Kim", initials: "RK", description: "Providing care bags to those living outside in the Pacific Northwest.", active: true },
-            { lat: 43.6532, lng: -79.3832, name: "Toronto", country: "Canada", leader: "Sarah Chen", initials: "SC", description: "Year-round support with special winter and summer care bag programs.", active: true },
-            { lat: 49.2827, lng: -123.1207, name: "Vancouver", country: "Canada", leader: "James Wilson", initials: "JW", description: "Supporting Vancouver's Downtown Eastside community.", active: true },
+            // North America - 14 US chapters
+            { lat: 26.1224, lng: -80.1373, name: "Fort Lauderdale", country: "United States", slug: "fort-lauderdale", active: true },
+            { lat: 26.3683, lng: -80.1289, name: "Boca Raton", country: "United States", slug: "boca-raton", active: true },
+            { lat: 40.7128, lng: -74.0060, name: "New York City", country: "United States", slug: "new-york-city", active: true },
+            { lat: 41.8781, lng: -87.6298, name: "Chicago", country: "United States", slug: "chicago", active: true },
+            { lat: 33.6846, lng: -117.8265, name: "Irvine", country: "United States", slug: "irvine", active: true },
+            { lat: 42.0451, lng: -87.6877, name: "Evanston", country: "United States", slug: "evanston", active: true },
+            { lat: 37.5485, lng: -121.9886, name: "Fremont", country: "United States", slug: "fremont", active: true },
+            { lat: 47.6101, lng: -122.2015, name: "Bellevue", country: "United States", slug: "bellevue", active: true },
+            { lat: 33.4152, lng: -111.8315, name: "Scottsdale", country: "United States", slug: "scottsdale", active: true },
+            { lat: 30.4383, lng: -84.2807, name: "Tallahassee", country: "United States", slug: "tallahassee", active: true },
+            { lat: 38.9072, lng: -77.0369, name: "Washington DC", country: "United States", slug: "washington-dc", active: true },
+            { lat: 29.4241, lng: -98.4936, name: "San Antonio", country: "United States", slug: "san-antonio", active: true },
+            { lat: 40.0583, lng: -74.4057, name: "Princeton", country: "United States", slug: "princeton", active: true },
+            { lat: 33.7490, lng: -84.3880, name: "Atlanta", country: "United States", slug: "atlanta", active: true },
             
-            // Europe
-            { lat: 51.5074, lng: -0.1278, name: "London", country: "United Kingdom", leader: "Oliver Williams", initials: "OW", description: "Partnering with local organizations to serve rough sleepers across the city.", active: true },
-            { lat: 48.8566, lng: 2.3522, name: "Paris", country: "France", leader: "Marie Dubois", initials: "MD", description: "Bringing care and compassion to those living on the streets of Paris.", active: true },
-            { lat: 52.5200, lng: 13.4050, name: "Berlin", country: "Germany", leader: "Hans Mueller", initials: "HM", description: "Organizing care bag drives and awareness campaigns.", active: true },
-            { lat: 41.9028, lng: 12.4964, name: "Rome", country: "Italy", leader: "Lucia Romano", initials: "LR", description: "Serving the homeless community near Vatican City and beyond.", active: true },
-            
-            // Asia Pacific
-            { lat: -33.8688, lng: 151.2093, name: "Sydney", country: "Australia", leader: "Liam Thompson", initials: "LT", description: "Engaging university students in outreach and education initiatives.", active: true },
-            { lat: -37.8136, lng: 144.9631, name: "Melbourne", country: "Australia", leader: "Emma Brown", initials: "EB", description: "Community-focused care bag distribution across Melbourne.", active: true },
-            { lat: 1.3521, lng: 103.8198, name: "Singapore", country: "Singapore", leader: "Wei Lin Tan", initials: "WT", description: "Addressing homelessness in Southeast Asia's urban center.", active: true },
-            { lat: 35.6762, lng: 139.6503, name: "Tokyo", country: "Japan", leader: "Yuki Tanaka", initials: "YT", description: "Bringing dignity and care to Tokyo's homeless population.", active: true },
-            
-            // Coming Soon
-            { lat: 19.4326, lng: -99.1332, name: "Mexico City", country: "Mexico", leader: "Coming Soon", initials: "?", description: "Chapter launching soon! Interested in leading? Apply today.", active: false },
-            { lat: -23.5505, lng: -46.6333, name: "São Paulo", country: "Brazil", leader: "Coming Soon", initials: "?", description: "Chapter launching soon! Interested in leading? Apply today.", active: false },
-            { lat: 28.6139, lng: 77.2090, name: "New Delhi", country: "India", leader: "Coming Soon", initials: "?", description: "Chapter launching soon! Interested in leading? Apply today.", active: false }
+            // International - 6 chapters
+            { lat: 43.4643, lng: -80.5204, name: "Waterloo", country: "Canada", slug: "waterloo", active: true },
+            { lat: 6.5244, lng: 3.3792, name: "Lagos", country: "Nigeria", slug: "lagos", active: true },
+            { lat: -33.9249, lng: 18.4241, name: "Cape Town", country: "South Africa", slug: "cape-town", active: true },
+            { lat: 12.9716, lng: 77.5946, name: "Bangalore", country: "India", slug: "bangalore", active: true },
+            { lat: -33.8688, lng: 151.2093, name: "Sydney", country: "Australia", slug: "sydney", active: true },
+            { lat: -34.6037, lng: -58.3816, name: "Buenos Aires", country: "Argentina", slug: "buenos-aires", active: true }
         ];
 
         // Add markers for each chapter
         chapters.forEach(chapter => {
-            const icon = chapter.active ? activeIcon : comingIcon;
-            const marker = L.marker([chapter.lat, chapter.lng], { icon: icon }).addTo(map);
+            const marker = L.marker([chapter.lat, chapter.lng], { icon: activeIcon }).addTo(map);
             
             const popupContent = `
                 <div class="chapter-popup">
-                    <h3>${chapter.name}</h3>
+                    <h3>${chapter.name} Chapter</h3>
                     <div class="location">${chapter.country}</div>
-                    <p>${chapter.description}</p>
-                    <div class="leader">
-                        <div class="leader-avatar">${chapter.initials}</div>
-                        <div class="leader-info">
-                            <strong>Chapter Leader</strong>
-                            <span>${chapter.leader}</span>
-                        </div>
-                    </div>
+                    <a href="chapter-${chapter.slug}.html" class="popup-btn">Learn More</a>
                 </div>
             `;
             
